@@ -5,18 +5,24 @@ print()
 import requests
 import json
 
-timezones = requests.get('http://worldtimeapi.org/api/timezone')
+#timezones = requests.get('http://worldtimeapi.org/api/timezone')
 timeInEgypt = requests.get('http://worldtimeapi.org/api/timezone/Africa/Cairo')
 
-#formats the request obj to a formatted json format for printing
+#print the request obj in a formatted json format 
 def jprint(obj):
 	formattedJson = json.dumps(obj.json(), indent=1)
 	print(formattedJson)
 
+#print the full dictionary 
 jprint(timeInEgypt)
 
+# extract the full time from the dictionary
 fullTime = timeInEgypt.json()["datetime"]
-indStart = fullTime.find("T")
-indEnd = fullTime.find(".")
 
-print(fullTime[indStart+1:indEnd])
+#extract the time from the fulltime string
+def timeFromString(fulltime):
+	indStart = fullTime.find("T")
+	indEnd = fullTime.find(".")
+	return fullTime[indStart+1:indEnd]
+
+print(timeFromString(fullTime))
