@@ -41,9 +41,9 @@ for known_face in known_faces:
       result = DeepFace.verify(img1_path = known_faces[known_face], img2_path = unknown_face)
       print(result, '\n\n')
       if (result['verified']):
-        results[unknown_face] = f'is {list(known_faces.keys())}'
+        results[unknown_face] = f'is {known_face}'
       else:
-        results[unknown_face] = f'is not {list(known_faces.keys())}'
+        results[unknown_face] = f'is not {known_face}'
     except:
       results[unknown_face] = f'FILED TO DETECT THE FACE'
 
