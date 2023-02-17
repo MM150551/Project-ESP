@@ -38,7 +38,7 @@ results = {}
 for known_face in known_faces:
   for unknown_face in unknown_faces: #this loop can be replaced with (video data stream)
     try:
-      result = DeepFace.verify(img1_path = known_faces['Ahmad'], img2_path = unknown_face)
+      result = DeepFace.verify(img1_path = known_faces[known_face], img2_path = unknown_face)
       print(result, '\n\n')
       if (result['verified']):
         results[unknown_face] = f'is {list(known_faces.keys())}'
