@@ -13,3 +13,6 @@ from requests import *
 
 token_bot = "6247412809:AAFlUT3zZL-FEbWExnrFsRtbdgIq42D59XI"
 Astra = telebot.TeleBot(token_bot)
+
+time_egy = dt.datetime.now(pytz.timezone("egypt"))
+time_utc = dt.datetime.now(pytz.UTC)
