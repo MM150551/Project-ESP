@@ -12,7 +12,7 @@ timeInEgypt = requests.get('http://worldtimeapi.org/api/timezone/Africa/Cairo')
 def jprint(obj):
 	formattedJson = json.dumps(obj.json(), indent=1)
 	print(formattedJson)
-
+	
 #print the full dictionary 
 jprint(timeInEgypt)
 

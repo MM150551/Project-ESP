@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Face_verf"
   ],
-  "SelectedNode": "\\module1.py",
+  "SelectedNode": "\\Face_verf\\verf.py",
   "PreviewInSolutionExplorer": false
 }

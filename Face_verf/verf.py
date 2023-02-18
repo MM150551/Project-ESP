@@ -17,11 +17,10 @@ The results from the comparison in the earlier step are used to add a label to e
 Overall, this code performs face verification on a set of known and unknown faces and displays the results.
 '''
 
-known_faces = {'Ahmad': r'/content/Face verification /known_faces/known.jpg'}
-unknown_faces = ['/content/Face verification /unknown_faces/unknow2.jpg', 
-                 '/content/Face verification /unknown_faces/unknown1.jpg', 
-                 '/content/Face verification /unknown_faces/unknown3.jpg',
-                 '/content/Face verification /unknown_faces/unknown5.jpg']
+import os
+os.chdir('C:\\Users\\mina1\\source\\Python_files\\face_reco_data')
+known_faces = ['chick', '12.jpg']
+unknown_faces = ['1.jpg', '2.jpg', '3.jpg','4.jpg','121212.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','66.jpg','leefa.jpg','1212.jpg','111.jpg','222.jpg']
 
 '''
 iterate through each known and unknown face to verify them using DeepFace library.
@@ -35,15 +34,15 @@ This approach can result in more fast recognition in real-time video streams.
 from deepface import DeepFace
 results = {}
 
-for known_face in known_faces:
-  for unknown_face in unknown_faces: #this loop can be replaced with (video data stream)
+
+for unknown_face in unknown_faces: #this loop can be replaced with (video data stream)
     try:
-      result = DeepFace.verify(img1_path = known_faces[known_face], img2_path = unknown_face)
+      result = DeepFace.verify(img1_path = known_faces[1], img2_path = unknown_face)
       print(result, '\n\n')
       if (result['verified']):
-        results[unknown_face] = f'is {known_face}'
+        results[unknown_face] = f'is {known_faces[0]}'
       else:
-        results[unknown_face] = f'is not {known_face}'
+        results[unknown_face] = f'is not {known_faces[0]}'
     except:
       results[unknown_face] = f'FILED TO DETECT THE FACE'
 
@@ -58,12 +57,13 @@ for known_face in known_faces:
 import matplotlib.pyplot as plt
 from PIL import Image
 
+
 #making the shape
 fig=plt.figure()
 # Load the images
-image1 = Image.open('/content/Face verification /known_faces/known.jpg')
+image1 = Image.open(known_faces[1])
 plt.imshow(image1)
-plt.title(f'The Known image, label = {list(known_faces.keys())[0]}')
+plt.title(f'The Known image, label = {known_faces[0]}')
 plt.show()
 
 
@@ -80,7 +80,7 @@ print(results)
 fig = plt.figure()
 for i in range(0, len(results_keys)):
     img = Image.open(results_keys[i])
-    fig.add_subplot(rows, 1, 1+i)
+    fig.add_subplot(rows, 4, 1+i)
     plt.title(f'{results_keys[i].split("/")[-1]} | {results_items[i]}')
     plt.imshow(img)
 plt.show()
