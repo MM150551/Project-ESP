@@ -31,4 +31,15 @@ def getDataFromTextFile(path):
     '''
     file = open(path, 'r')
     lines = file.readlines()
-    return lines[-2]
+    if len(lines[-2]) > 16:
+        raise OverflowError (
+        f'''
+        Assigned buffer in receiver is only 16 Byte size, name is {len(lines)} bytes.
+
+        Make sure that data size you want to transmitt is not greater than 16 byte.
+
+        Try reducing data size long or choose a compressed form.
+        '''
+        )
+    else:
+        return lines[-2]
