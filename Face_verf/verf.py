@@ -19,7 +19,7 @@ Overall, this code performs face verification on a set of known and unknown face
 
 import os
 os.chdir('C:\\Users\\mina1\\source\\Python_files\\face_reco_data')
-known_faces = ['chick', '12.jpg']
+known_faces = ['leefa', 'leefa.jpg']
 unknown_faces = ['1.jpg', '2.jpg', '3.jpg','4.jpg','121212.jpg','6.jpg','7.jpg','8.jpg','9.jpg','10.jpg','11.jpg','66.jpg','leefa.jpg','1212.jpg','111.jpg','222.jpg']
 
 '''
