@@ -46,6 +46,7 @@ def modifyLastSeenTimeTXT(fileDir,currentTime,currentDate,inputName):
     #print(Data)
     for i in range(len(updatedData)):
         file.write(updatedData[i])
+    #print(updatedData)
     print("Log file updated successfully")
     print("time for " + inputName +" has been set to " + formattedCurrentTime)
 
@@ -93,13 +94,12 @@ while capture.isOpened():
             print(confidence)
 
             if confidence > 60:
-                print(labels_list[id_])
+                #print(labels_list[id_])
                 cv2.putText(img, labels_list[id_].upper(), (x-tol,y-tol), cv2.FONT_HERSHEY_PLAIN,1,(255,255,255),1,cv2.LINE_AA)
-            if cv2.waitKey(1) == ord('e'):
-                if confidence > 60 and confidence < 70:
-                    modifyLastSeenTimeTXT(LogTextFileDir,currentTime,currentDate,labels_list[id_])
+            if cv2.waitKey(1) == ord('e'): 
+                modifyLastSeenTimeTXT(LogTextFileDir,currentTime,currentDate,labels_list[id_]) #modify text file
         
-    print(currentTime)
+    #print(currentTime)
             
 
 
